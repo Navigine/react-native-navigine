@@ -1,3 +1,19 @@
+<h1 align="center">
+  <img src="resources/logo.jpg"/><br/>
+</h1>
+
+## React Native Navigine
+
+The following sections contain a library  for using our SDK (android, iOS) in react-native. Our solution provides a 100% precise on both iOS and Android for react native apps.
+
+## Useful Links
+
+- [SDK Documentation](https://github.com/Navigine/Indoor-Navigation-Android-Mobile-SDK-2.0/wiki)
+- Refer to the [Navigine official documentation](https://docs.navigine.com) for complete list of downloads, useful materials, information about the company, and so on.
+- [Get started](http://client.navigine.com/login) with Navigine to get full access to Navigation services, SDKs, and applications.
+- Refer to the Navigine [User Manual](http://docs.navigine.com/) for complete product usage guidelines.
+- Find company contact information at the official website under <a href="https://navigine.com/contacts/">Contact</a> tab.
+
 ## Example project
 
 - [Navigine basic example](https://github.com/Navigine/react-native-navigine-example)
