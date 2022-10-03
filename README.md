@@ -1,3 +1,16 @@
+
+[![SWUbanner](https://i.ibb.co/DK0WNM7/react-native.jpg)](https://github.com/Navigine/react-native-navigine)
+
+## Description
+The following sections contain a library  for using our SDK (android, iOS) in react-native. Our solution provides a 100% precise on both iOS and Android for react native apps. 
+
+## Useful links 
+- [SDK Documentation](https://github.com/Navigine/Indoor-Navigation-Android-Mobile-SDK-2.0/wiki)
+
+- Refer to the [Navigine official documentation](https://docs.navigine.com/)  for a complete list of downloads, useful materials, information about the company, and so on.
+- [Get started](https://client.navigine.com/login)  with Navigine to get full access to Navigation services, SDKs, and applications.
+- Refer to the Navigine - [User Manual](https://docs.navigine.com/) for complete product usage guidelines.
+- Find company contact information at the official website under the [Contacts tab](https://navigine.com/contacts/).
 ## Example project
 
 - [Navigine basic example](https://github.com/Navigine/react-native-navigine-example)
