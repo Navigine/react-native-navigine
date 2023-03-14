@@ -11,7 +11,7 @@ The following sections contain a library  for using our SDK (android, iOS) in re
 - [Get started](https://client.navigine.com/login)  with Navigine to get full access to Navigation services, SDKs, and applications.
 - Refer to the Navigine - [User Manual](https://docs.navigine.com/) for complete product usage guidelines.
 - Find company contact information at the official website under the [Contacts tab](https://navigine.com/contacts/).
-## Example project
+## Getting started - project example
 
 - [Navigine basic example](https://github.com/Navigine/react-native-navigine-example)
 
