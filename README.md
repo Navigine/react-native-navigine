@@ -1,7 +1,7 @@
 
 [![SWUbanner](https://i.ibb.co/DK0WNM7/react-native.jpg)](https://github.com/Navigine/react-native-navigine)
 
-*What is React Native?*
+**What is React Native?**
 
 React Native is an open-source UI software framework, used to develop applications for Android, iOS. React Native offers a large amount of inbuilt components and APIs and is well suited for creating location-powered applications with various features, such as indoor wayfinding, real time positioning and geomarketing instruments. 
 
