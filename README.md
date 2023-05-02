@@ -15,7 +15,7 @@ The following sections contain a library  for using our SDK (android, iOS) in re
 4. Refer to the Navigine [User Manual](http://docs.navigine.com/) for complete product usage guidelines.
 5. Find company contact information at the official website under [Contact](https://navigine.com/contacts/) tab.
 6. Find information about Navigine’s Open Source Initiative [here](https://navigine.com/open-source/)
-## Getting started - project example
+
 
 ## Values and benefits
 React Native is a versatile platform that can be used in many industries, such as retail, healthcare, logistics, and transportation. With the Navigine SDK for React Native, businesses in these industries can take advantage of accurate indoor positioning and tracking to improve their operations and provide a better experience for their customers.
@@ -33,6 +33,8 @@ User-friendly: Navigine's SDK is user-friendly, with a simple and intuitive inte
 For example, in retail, businesses can use indoor positioning to guide customers to products they are looking for and provide personalized offers based on their location in the store. In healthcare, indoor positioning can be used to track patients and medical equipment, improving efficiency and reducing errors. In logistics and transportation, indoor positioning can be used to track assets, optimize routes, and improve safety.
 
 In summary, the Navigine SDK for React Native provides businesses with an accurate and reliable indoor positioning solution that can be customized to their specific needs, improving their operations and providing a better experience for their customers.
+
+## Getting started - project example
 
 - [Navigine basic example](https://github.com/Navigine/react-native-navigine-example)
 
