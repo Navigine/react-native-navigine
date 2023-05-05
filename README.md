@@ -18,6 +18,9 @@ The following sections contain a library  for using our SDK (android, iOS) in re
 
 
 ## Values and benefits
+
+<p align="center"><img  width="100%" height="100%" src=https://github.com/Navigine/react-native-navigine/blob/main/react-native.jpg></p>
+
 React Native is a versatile platform that can be used in many industries, such as retail, healthcare, logistics, and transportation. With the Navigine SDK for React Native, businesses in these industries can take advantage of accurate indoor positioning and tracking to improve their operations and provide a better experience for their customers.
 
 Using the Navigine SDK for React Native provides several benefits, including:
