@@ -47,16 +47,28 @@ public class NavigineLocationView extends LocationView {
             @Override
             public void onPositionUpdated(Position position) {
                 WritableMap point = Arguments.createMap();
-                point.putDouble("x", position.getPoint().getX());
-                point.putDouble("y", position.getPoint().getY());
+                point.putDouble("x", position.getLocationPoint().getPoint().getX());
+                point.putDouble("y", position.getLocationPoint().getPoint().getY());
+
+                WritableMap locationPoint = Arguments.createMap();
+                locationPoint.putMap("point", point);
+                locationPoint.putInt("locationId", position.getLocationPoint().getLocationId());
+                locationPoint.putInt("sublocationId", position.getLocationPoint().getSublocationId());
+
+                WritableMap globalPoint = Arguments.createMap();
+                globalPoint.putDouble("latitude", position.getPoint().getLatitude());
+                globalPoint.putDouble("longitude", position.getPoint().getLongitude());
+
+
                 WritableMap data = Arguments.createMap();
-                data.putInt("locationId", position.getLocationId());
-                data.putInt("sublocationId", position.getSublocationId());
+                data.putMap("point", globalPoint);
                 data.putDouble("accuracy", position.getAccuracy());
-                data.putDouble("azimuth", position.getAzimuth());
-                data.putMap("point", point);
+                data.putDouble("heading", position.getHeading());
+                data.putMap("locationPoint", locationPoint);
+                data.putDouble("heading", position.getLocationHeading());
+
                 ReactContext reactContext = (ReactContext) getContext();
-                reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onPositionUpated", data);
+                reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onPositionUpdated", data);
             }
 
             @Override

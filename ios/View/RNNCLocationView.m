@@ -104,19 +104,32 @@
 }
 
 - (void)onPositionUpdated:(nonnull NCPosition *)position {
-  if (self.onPositionUpated) {
+  if (self.onPositionUpdated) {
     NSDictionary* point = @{
-      @"x": [NSNumber numberWithDouble:position.point.x],
-      @"y": [NSNumber numberWithDouble:position.point.y]
+      @"x": @(position.locationPoint.point.x),
+      @"y": @(position.locationPoint.point.y)
     };
+
+    NSDictionary* locationPoint = @{
+      @"point": point,
+      @"locationId": @(position.locationPoint.locationId),
+      @"sublocationId": @(position.locationPoint.sublocationId)
+    };
+
+    NSDictionary* globalPoint = @{
+      @"latitude": @(position.point.latitude),
+      @"longitude": @(position.point.longitude)
+    };
+
     NSDictionary* data = @{
-        @"locationId": [NSNumber numberWithInteger:position.locationId],
-        @"sublocationId": [NSNumber numberWithInteger:position.sublocationId],
-        @"accuracy": [NSNumber numberWithFloat:position.accuracy],
-        @"azimuth": [NSNumber numberWithFloat:position.azimuth],
-        @"point": point
+        @"point": globalPoint,
+        @"accuracy": @(position.accuracy),
+        @"heading": @(position.heading.doubleValue),
+        @"locationPoint": locationPoint,
+        @"locationHeading": @(position.locationHeading.doubleValue)
     };
-    self.onPositionUpated(data);
+
+    self.onPositionUpdated(data);
   }
 }
 

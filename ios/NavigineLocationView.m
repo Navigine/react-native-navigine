@@ -19,7 +19,7 @@
 RCT_EXPORT_MODULE()
 
 - (NSArray<NSString *> *)supportedEvents {
-    return @[@"onPositionUpated", @"onPathsUpdated", @"onMapPress", @"onMapLongPress", @"onScreenPositionToMetersReceived"];
+    return @[@"onPositionUpdated", @"onPathsUpdated", @"onMapPress", @"onMapLongPress", @"onScreenPositionToMetersReceived"];
 }
 
 - (instancetype)init {
@@ -35,7 +35,7 @@ RCT_EXPORT_MODULE()
     return view;
 }
 
-RCT_EXPORT_VIEW_PROPERTY(onPositionUpated, RCTBubblingEventBlock);
+RCT_EXPORT_VIEW_PROPERTY(onPositionUpdated, RCTBubblingEventBlock);
 RCT_EXPORT_VIEW_PROPERTY(onPathsUpdated, RCTBubblingEventBlock);
 RCT_EXPORT_VIEW_PROPERTY(onMapPress, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onMapLongPress, RCTBubblingEventBlock)

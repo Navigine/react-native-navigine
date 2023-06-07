@@ -3,6 +3,11 @@ export interface Point {
     y: number,
 }
 
+export interface GlobalPoint {
+  latitude: number,
+  longitude: number,
+}
+
 export interface Polyline {
     points: Point[]
 }
@@ -20,11 +25,11 @@ export interface LocationPolyline {
 }
 
 export interface Position {
-  point: Point;
-  locationId: number;
-  sublocationId: number;
+  point: GlobalPoint;
   accuracy: number;
-  azimuth: number;
+  heading: number;
+  locationPoint: LocationPoint;
+  locationHeading: number;
 }
 
 export enum RouteEventType {

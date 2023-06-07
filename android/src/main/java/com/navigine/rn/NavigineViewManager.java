@@ -38,7 +38,7 @@ public class NavigineViewManager extends ViewGroupManager<NavigineLocationView> 
 
     public Map getExportedCustomBubblingEventTypeConstants() {
         return MapBuilder.builder()
-                .put("onPositionUpated", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "onPositionUpated")))
+                .put("onPositionUpdated", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "onPositionUpdated")))
                 .put("onPathsUpdated", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "onPathsUpdated")))
                 .put("onMapPress", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "onMapPress")))
                 .put("onMapLongPress", MapBuilder.of("phasedRegistrationNames", MapBuilder.of("bubbled", "onMapLongPress")))

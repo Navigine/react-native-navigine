@@ -3,12 +3,12 @@
 
 **What is React Native?**
 
-React Native is an open-source UI software framework, used to develop applications for Android, iOS. React Native offers a large amount of inbuilt components and APIs and is well suited for creating location-powered applications with various features, such as indoor wayfinding, real time positioning and geomarketing instruments. 
+React Native is an open-source UI software framework, used to develop applications for Android, iOS. React Native offers a large amount of inbuilt components and APIs and is well suited for creating location-powered applications with various features, such as indoor wayfinding, real time positioning and geomarketing instruments.
 
 ## Description
-The following sections contain a library  for using our SDK (android, iOS) in react-native. Our solution provides a 100% precise on both iOS and Android for react native apps. 
+The following sections contain a library  for using our SDK (android, iOS) in react-native. Our solution provides a 100% precise on both iOS and Android for react native apps.
 
-## Useful links 
+## Useful links
 1. [SDK Documentation](https://github.com/Navigine/Indoor-Navigation-Android-Mobile-SDK-2.0/wiki)
 2. Refer to the [Navigine official documentation](https://navigine.com/documentation/) for complete list of downloads, useful materials, information about the company, and so on.
 3. [Get started](http://locations.navigine.com/login) with Navigine to get full access to Navigation services, SDKs, and applications.
@@ -144,7 +144,7 @@ export enum Animation {
 ### LocationView - main view with sublocation content
 
 #### LocationView `props`
-- `onPositionUpated?: (event: NativeSyntheticEvent<Position>) => void;`
+- `onPositionUpdated?: (event: NativeSyntheticEvent<Position>) => void;`
 - `onPathsUpdated?: (event: NativeSyntheticEvent<RoutePath>) => void;`
 - `onMapPress?: (event: NativeSyntheticEvent<Point>) => void;`
 - `onMapLongPress?: (event: NativeSyntheticEvent<Point>) => void;`
@@ -165,7 +165,7 @@ import { IconMapObject } from 'react-native-navigine'
 <LocationView
     ref={this.view}
     style={styles.locationView}
-    onPositionUpated={this.onPositionUpated}
+    onPositionUpdated={this.onPositionUpdated}
     onPathsUpdated={this.onPathsUpdated}
     onMapPress={this.onMapPress}
     onMapLongPress={this.onMapLongPress}>

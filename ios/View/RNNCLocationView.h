@@ -15,7 +15,7 @@
 - (void) setTarget:(NCLocationPoint * _Nonnull) targetPoint;
 - (void) clearTargets;
 
-@property (nonatomic, copy) RCTBubblingEventBlock _Nullable onPositionUpated;
+@property (nonatomic, copy) RCTBubblingEventBlock _Nullable onPositionUpdated;
 @property (nonatomic, copy) RCTBubblingEventBlock _Nullable onPathsUpdated;
 @property (nonatomic, copy) RCTBubblingEventBlock _Nullable onMapPress;
 @property (nonatomic, copy) RCTBubblingEventBlock _Nullable onMapLongPress;

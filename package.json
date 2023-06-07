@@ -1,6 +1,6 @@
 {
   "name": "react-native-navigine",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Navigine SDK for react-native",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -15,11 +15,10 @@
   ],
   "author": "Pavel Tychinin",
   "license": "",
-  "dependencies": {},
   "devDependencies": {
-    "typescript": "^3.8.3",
     "@types/react": "*",
-    "@types/react-native": "*"
+    "@types/react-native": "*",
+    "typescript": "^3.8.3"
   },
   "peerDependencies": {
     "react": "*",

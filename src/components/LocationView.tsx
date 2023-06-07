@@ -17,7 +17,7 @@ import { LocationPoint, Position, Point, RoutePath } from '../interfaces';
 const { NavigineModule: NativeNavigineModule, LocationViewModule: NavigineLocationView } = NativeModules;
 
 export interface NavigineViewProps extends ViewProps {
-    onPositionUpated?: (event: NativeSyntheticEvent<Position>) => void;
+    onPositionUpdated?: (event: NativeSyntheticEvent<Position>) => void;
     onPathsUpdated?: (event: NativeSyntheticEvent<RoutePath>) => void;
     onMapPress?: (event: NativeSyntheticEvent<Point>) => void;
     onMapLongPress?: (event: NativeSyntheticEvent<Point>) => void;
