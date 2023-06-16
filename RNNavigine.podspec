@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
     # s.requires_arc = true
 
     s.dependency "React"
-    s.dependency "Navigine", "2.2.0"
+    s.dependency "Navigine", "2.3.1"
 end
