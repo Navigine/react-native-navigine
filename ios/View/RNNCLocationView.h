@@ -6,7 +6,7 @@
 
 @class RCTBridge;
 
-@interface RNNCLocationView: NCLocationView<RCTComponent, NCPositionListener, NCRouteListener, NCGestureRecognizerDelegate>
+@interface RNNCLocationView: NCLocationView<RCTComponent, NCPositionListener, NCRouteListener, NCInputListener>
 
 - (void) setLocationId: (int)locationId;
 - (void) setSublocationId: (int)sublocationId;

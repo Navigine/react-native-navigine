@@ -20,6 +20,8 @@ import java.util.Map;
 public class RNNavigineModule extends ReactContextBaseJavaModule {
     private static final String REACT_CLASS = "NavigineModule";
 
+    private NavigineSdk sdk;
+
     private ReactApplicationContext getContext() {
         return reactContext;
     }
@@ -52,9 +54,10 @@ public class RNNavigineModule extends ReactContextBaseJavaModule {
                 // And setting api key leads to crash
                 try {
                     Navigine.initialize(reactContext);
-                    NavigineSdk.setUserHash(userHash);
-                    NavigineSdk.setServer(server);
-                    NavigineSdk.getInstance();
+
+                    sdk = NavigineSdk.getInstance();
+                    sdk.setUserHash(userHash);
+                    sdk.setServer(server);
                 } catch (Throwable exception) {
                     initException = exception;
                 }

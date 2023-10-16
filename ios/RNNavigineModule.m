@@ -29,9 +29,10 @@ RCT_EXPORT_METHOD(init: (NSString *) userHash server:(NSString *) server
           resolver:(RCTPromiseResolveBlock)resolve
           rejecter:(RCTPromiseRejectBlock)reject) {
     @try {
-        [NCNavigineSdk setUserHash: userHash];
-        [NCNavigineSdk setServer: server];
-        [NCNavigineSdk getInstance];
+        _sdk = [NCNavigineSdk getInstance];
+        [_sdk setUserHash: userHash];
+        [_sdk setServer: server];
+
         resolve(nil);
     } @catch (NSException *exception) {
         NSError *error = nil;

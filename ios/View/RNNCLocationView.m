@@ -26,7 +26,7 @@
 
     [_navigationManager addPositionListener:self];
     [_routeManager addRouteListener:self];
-    super.gestureDelegate = self;
+    [super.locationWindow addInputListener:self];
     return self;
 }
 
@@ -40,11 +40,11 @@
 }
 
 - (void) setSublocationId: (int)sublocationId {
-    [super setSublocationId:sublocationId];
+    [super.locationWindow setSublocationId:sublocationId];
 }
 
 - (void) screenPositionToMeters: (NSString * _Nonnull)_id position:(NSDictionary * _Nonnull) position {
-    NCPoint* point = [super screenPositionToMeters:CGPointMake([position[@"x"] floatValue], [position[@"y"] floatValue])];
+    NCPoint* point = [super.locationWindow screenPositionToMeters:CGPointMake([position[@"x"] floatValue], [position[@"y"] floatValue])];
     NSDictionary* metersPoint = @{
         @"x": @(point.x),
         @"y": @(point.y)
@@ -59,15 +59,15 @@
 - (void)insertReactSubview:(UIView<RCTComponent>*) subview atIndex:(NSInteger) atIndex {
   if ([subview isKindOfClass:[NaviginePolylineMapObjectView class]]) {
     NaviginePolylineMapObjectView* polyline = (NaviginePolylineMapObjectView*) subview;
-    NCPolylineMapObject* obj = [self addPolylineMapObject];
+    NCPolylineMapObject* obj = [self.locationWindow addPolylineMapObject];
     [polyline setMapObject:obj];
   } else if ([subview isKindOfClass:[NavigineIconMapObjectView class]]) {
     NavigineIconMapObjectView* marker = (NavigineIconMapObjectView *) subview;
-    NCIconMapObject* obj = [self addIconMapObject];
+    NCIconMapObject* obj = [self.locationWindow addIconMapObject];
     [marker setMapObject:obj];
   } else if ([subview isKindOfClass:[NavigineCircleMapObjectView class]]) {
     NavigineCircleMapObjectView* circle = (NavigineCircleMapObjectView*) subview;
-    NCCircleMapObject* obj = [self addCircleMapObject];
+    NCCircleMapObject* obj = [self.locationWindow addCircleMapObject];
     [circle setMapObject:obj];
   } else {
     NSArray<id<RCTComponent>> *childSubviews = [subview reactSubviews];
@@ -82,13 +82,13 @@
 - (void)removeReactSubview:(UIView<RCTComponent>*) subview {
   if ([subview isKindOfClass:[NaviginePolylineMapObjectView class]]) {
     NaviginePolylineMapObjectView* polyline = (NaviginePolylineMapObjectView*) subview;
-    [self removePolylineMapObject:[polyline getMapObject]];
+    [self.locationWindow removePolylineMapObject:[polyline getMapObject]];
   } else if ([subview isKindOfClass:[NavigineIconMapObjectView class]]) {
     NavigineIconMapObjectView* marker = (NavigineIconMapObjectView*) subview;
-    [self removeIconMapObject:[marker getMapObject]];
+    [self.locationWindow removeIconMapObject:[marker getMapObject]];
   } else if ([subview isKindOfClass:[NavigineCircleMapObjectView class]]) {
     NavigineCircleMapObjectView* circle = (NavigineCircleMapObjectView*) subview;
-    [self removeCircleMapObject:[circle getMapObject]];
+    [self.locationWindow removeCircleMapObject:[circle getMapObject]];
   } else {
     NSArray<id<RCTComponent>> *childSubviews = [subview reactSubviews];
     for (int i = 0; i < childSubviews.count; i++) {
@@ -178,28 +178,31 @@
   [_routeManager clearTargets];
 }
 
-- (void)locationView:(NCLocationView *)view
-          recognizer:(UIGestureRecognizer *)recognizer
-didRecognizeSingleTapGesture:(CGPoint)location {
+-(void) onViewTap:(CGPoint)screenPoint
+{
     if (self.onMapPress) {
         NSDictionary* data = @{
-            @"x": [NSNumber numberWithDouble:location.x],
-            @"y": [NSNumber numberWithDouble:location.y],
+            @"x": [NSNumber numberWithDouble:screenPoint.x],
+            @"y": [NSNumber numberWithDouble:screenPoint.y],
         };
         self.onMapPress(data);
     }
 }
 
-- (void)locationView:(NCLocationView *)view
-     recognizer:(UIGestureRecognizer *)recognizer
-didRecognizeLongPressGesture:(CGPoint)location {
-  if (self.onMapLongPress) {
-        NSDictionary* data = @{
-            @"x": [NSNumber numberWithDouble:location.x],
-            @"y": [NSNumber numberWithDouble:location.y],
-        };
-        self.onMapLongPress(data);
-    }
+- (void) onViewLongTap:(CGPoint)screenPoint
+{
+    if (self.onMapLongPress) {
+          NSDictionary* data = @{
+              @"x": [NSNumber numberWithDouble:screenPoint.x],
+              @"y": [NSNumber numberWithDouble:screenPoint.y],
+          };
+          self.onMapLongPress(data);
+      }
+}
+
+- (void) onViewDoubleTap:(CGPoint)screenPoint
+{
+    
 }
 
 @synthesize reactTag;

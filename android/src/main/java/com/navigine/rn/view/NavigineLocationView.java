@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.PointF;
 import android.view.View;
 
+import com.navigine.idl.java.InputListener;
 import com.navigine.rn.models.ReactMapObject;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
@@ -114,29 +115,29 @@ public class NavigineLocationView extends LocationView {
             }
         });
 
-        getLocationViewController().getTouchInput().setTapResponder(new TouchInput.TapResponder() {
+        getLocationWindow().addInputListener(new InputListener() {
             @Override
-            public boolean onSingleTapUp(float x, float y) {
-                return false;
-            }
-
-            @Override
-            public boolean onSingleTapConfirmed(float x, float y) {
+            public void onViewTap(PointF pointF) {
                 WritableMap data = Arguments.createMap();
-                data.putDouble("x", x);
-                data.putDouble("y", y);
+                data.putDouble("x", pointF.x);
+                data.putDouble("y", pointF.y);
                 ReactContext reactContext = (ReactContext) getContext();
                 reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onMapPress", data);
-                return true;
             }
-        });
 
-        getLocationViewController().getTouchInput().setLongPressResponder((x, y) -> {
-            WritableMap data = Arguments.createMap();
-            data.putDouble("x", x);
-            data.putDouble("y", y);
-            ReactContext reactContext = (ReactContext) getContext();
-            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onMapLongPress", data);
+            @Override
+            public void onViewDoubleTap(PointF pointF) {
+
+            }
+
+            @Override
+            public void onViewLongTap(PointF pointF) {
+                WritableMap data = Arguments.createMap();
+                data.putDouble("x", pointF.x);
+                data.putDouble("y", pointF.y);
+                ReactContext reactContext = (ReactContext) getContext();
+                reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onMapLongPress", data);
+            }
         });
     }
 
@@ -146,13 +147,13 @@ public class NavigineLocationView extends LocationView {
     }
 
     public void setSublocationId(int sublocationId) {
-        super.getLocationViewController().setSublocationId(sublocationId);
+        super.getLocationWindow().setSublocationId(sublocationId);
     }
 
     public void screenPositionToMeters(String id, ReadableMap pointMap) {
         float x = pointMap.getInt("x");
         float y = pointMap.getInt("y");
-        Point point = getLocationViewController().screenPositionToMeters(new PointF(x, y));
+        Point point = getLocationWindow().screenPositionToMeters(new PointF(x, y));
         WritableMap metersPoint = Arguments.createMap();
         metersPoint.putDouble("x", point.getX());
         metersPoint.putDouble("y", point.getY());
@@ -179,17 +180,17 @@ public class NavigineLocationView extends LocationView {
     public void addFeature(View child, int index) {
         if (child instanceof NavigineIconMapObject){
             NavigineIconMapObject _child = (NavigineIconMapObject) child;
-            IconMapObject obj = getLocationViewController().addIconMapObject();
+            IconMapObject obj = getLocationWindow().addIconMapObject();
             _child.setMapObject(obj);
             childs.add(_child);
          }else if(child instanceof NavigineCircleMapObject){
              NavigineCircleMapObject _child = (NavigineCircleMapObject) child;
-             CircleMapObject obj = getLocationViewController().addCircleMapObject();
+             CircleMapObject obj = getLocationWindow().addCircleMapObject();
              _child.setMapObject(obj);
              childs.add(_child);
         }else if(child instanceof NaviginePolylineMapObject){
             NaviginePolylineMapObject _child = (NaviginePolylineMapObject) child;
-            PolylineMapObject obj = getLocationViewController().addPolylineMapObject();
+            PolylineMapObject obj = getLocationWindow().addPolylineMapObject();
             _child.setMapObject(obj);
             childs.add(_child);
         }
@@ -204,13 +205,13 @@ public class NavigineLocationView extends LocationView {
                 if (mapObject == null) return;
                 if (mapObject instanceof IconMapObject) {
                     final IconMapObject iconMapObject = (IconMapObject) mapObject;
-                    getLocationViewController().removeIconMapObject(iconMapObject);
+                    getLocationWindow().removeIconMapObject(iconMapObject);
                 } else if (mapObject instanceof PolylineMapObject) {
                     final PolylineMapObject polylineMapObject = (PolylineMapObject) mapObject;
-                    getLocationViewController().removePolylineMapObject(polylineMapObject);
+                    getLocationWindow().removePolylineMapObject(polylineMapObject);
                 } else if (mapObject instanceof CircleMapObject) {
                     final CircleMapObject circleMapObject = (CircleMapObject) mapObject;
-                    getLocationViewController().removeCircleMapObject(circleMapObject);
+                    getLocationWindow().removeCircleMapObject(circleMapObject);
                 }
         }
     }
