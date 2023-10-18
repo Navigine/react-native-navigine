@@ -11,8 +11,7 @@ Pod::Spec.new do |s|
     s.platform     = :ios, "12.0"
     s.source       = { :git => "https://github.com/navigine/RNNavigine.git", :tag => "master" }
     s.source_files = "ios/**/*.{h,m}"
-    # s.requires_arc = true
 
     s.dependency "React"
-    s.dependency "Navigine", "2.4.0"
+    s.dependency "Navigine", "2.4.1"
 end
