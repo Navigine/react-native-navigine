@@ -16,7 +16,7 @@
 
 @implementation NavigineLocationView
 
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE(NavigineLocationView)
 
 - (NSArray<NSString *> *)supportedEvents {
     return @[@"onPositionUpdated", @"onPathsUpdated", @"onMapPress", @"onMapLongPress", @"onScreenPositionToMetersReceived"];

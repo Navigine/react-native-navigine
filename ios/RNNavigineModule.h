@@ -4,7 +4,7 @@
 #import <React/RCTBridgeModule.h>
 #endif
 #import "NavigineLocationView.h"
-#import "NCNavigineSdk.h"
+#import <Navigine/NCNavigineSdk.h>
 
 @interface NavigineModule : NSObject <RCTBridgeModule>
 
