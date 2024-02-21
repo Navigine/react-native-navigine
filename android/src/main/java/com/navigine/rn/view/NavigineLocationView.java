@@ -47,26 +47,37 @@ public class NavigineLocationView extends LocationView {
         mNavigationManager.addPositionListener(new PositionListener() {
             @Override
             public void onPositionUpdated(Position position) {
-                WritableMap point = Arguments.createMap();
-                point.putDouble("x", position.getLocationPoint().getPoint().getX());
-                point.putDouble("y", position.getLocationPoint().getPoint().getY());
-
+                if (position == null) return;
+                LocationPoint lp = position.getLocationPoint();
                 WritableMap locationPoint = Arguments.createMap();
-                locationPoint.putMap("point", point);
-                locationPoint.putInt("locationId", position.getLocationPoint().getLocationId());
-                locationPoint.putInt("sublocationId", position.getLocationPoint().getSublocationId());
+
+                if (lp != null) {
+                    WritableMap point = Arguments.createMap();
+                    point.putDouble("x", lp.getPoint().getX());
+                    point.putDouble("y", lp.getPoint().getY());
+
+                    locationPoint.putMap("point", point);
+                    locationPoint.putInt("locationId", lp.getLocationId());
+                    locationPoint.putInt("sublocationId", lp.getSublocationId());
+                }
 
                 WritableMap globalPoint = Arguments.createMap();
                 globalPoint.putDouble("latitude", position.getPoint().getLatitude());
                 globalPoint.putDouble("longitude", position.getPoint().getLongitude());
 
-
                 WritableMap data = Arguments.createMap();
                 data.putMap("point", globalPoint);
                 data.putDouble("accuracy", position.getAccuracy());
-                data.putDouble("heading", position.getHeading());
+
+                Double heading = position.getHeading();
+                if (heading != null) {
+                    data.putDouble("heading", heading);
+                }
                 data.putMap("locationPoint", locationPoint);
-                data.putDouble("heading", position.getLocationHeading());
+                Double locationHeading = position.getLocationHeading();
+                if (locationHeading != null) {
+                    data.putDouble("heading", locationHeading);
+                }
 
                 ReactContext reactContext = (ReactContext) getContext();
                 reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onPositionUpdated", data);
