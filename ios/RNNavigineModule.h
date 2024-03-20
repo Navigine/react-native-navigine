@@ -5,8 +5,9 @@
 #endif
 #import "NavigineLocationView.h"
 #import <Navigine/NCNavigineSdk.h>
+#import <React/RCTEventEmitter.h>
 
-@interface NavigineModule : NSObject <RCTBridgeModule>
+@interface NavigineModule : RCTEventEmitter <RCTBridgeModule>
 
 @property (nonatomic, strong) NavigineLocationView *view;
 @property (nonatomic, strong) NCNavigineSdk *sdk;

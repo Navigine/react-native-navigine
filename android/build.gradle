@@ -29,5 +29,5 @@ repositories {
 dependencies {
     implementation 'com.google.android.gms:play-services-location:20.0.0'
     implementation 'com.facebook.react:react-native:+'
-    implementation 'com.github.Navigine:Indoor-Navigation-Android-Mobile-SDK-2.0:20240125'
+    implementation 'com.github.Navigine:Indoor-Navigation-Android-Mobile-SDK-2.0:20240318'
 }
